@@ -284,6 +284,7 @@ public class Aplicacion {
                 cliente.delCuenta(c);
         }
         System.out.println("Cuenta eliminada correctamente!");
+        //
     }
 
     private static void vincularCuenta(@NotNull Cliente c) throws IOException {
