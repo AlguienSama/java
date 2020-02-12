@@ -1,6 +1,6 @@
 package exBanco.clases;
 
-import exBanco.Funs;
+import exBanco.main.Funs;
 import exBanco.clases.*;
 
 import java.util.ArrayList;

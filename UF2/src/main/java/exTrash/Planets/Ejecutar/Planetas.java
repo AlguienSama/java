@@ -3,8 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Planets.Ejecutar;
-import Planets.Planeta.*;
+package exTrash.Planets.Ejecutar;
+import exTrash.Planets.Planeta.*;
 /**
  *
  * @author alu2019222

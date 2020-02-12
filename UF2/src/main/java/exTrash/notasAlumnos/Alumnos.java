@@ -132,10 +132,10 @@ public class Alumnos {
         do {
             System.out.println("\nQue alumno desea eliminar?");
             // Mostramos alumnos
-            for (int i = 0; i < alus.length; i++) {
-                if (alus[i] != null) {
+            for (Alumno alumno : alus) {
+                if (alumno != null) {
                     j++;
-                    System.out.println(j + ") " + alus[i].getNombre() + " " + alus[i].getApellido());
+                    System.out.println(j + ") " + alumno.getNombre() + " " + alumno.getApellido());
                 }
             }
             String elect3S = br.readLine();

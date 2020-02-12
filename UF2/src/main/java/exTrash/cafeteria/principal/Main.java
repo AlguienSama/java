@@ -1,7 +1,7 @@
 package exTrash.cafeteria.principal;
 
 import exTrash.cafeteria.maquinaria.Cafetera;
-import general.Funs;
+import exSuperheroes.Funs;
 
 import java.io.BufferedReader;
 import java.io.IOException;

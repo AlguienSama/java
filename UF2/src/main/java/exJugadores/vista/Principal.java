@@ -1,8 +1,7 @@
 package exJugadores.vista;
 
 import exJugadores.modelo.Jugador;
-
-import general.Funs;
+import exJugadores.Funs;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -45,7 +44,7 @@ public class Principal {
                     System.out.println("Opción incorrecta");
             }
 
-        } while (exit);
+        } while (!exit);
         // Informamos de que el jugador se ha registrado correctamente
         System.out.println("Jugador registrado correctamente");
     }
@@ -122,7 +121,6 @@ public class Principal {
         for (Jugador jugador : jugadores) {
             // Miramos si existe el jugador
             if (jugador != null && jugador.getNombre().equals(nombre)) {
-                // En caso afirmativo ya retornamos true
                 return true;
             }
         }
@@ -211,6 +209,9 @@ public class Principal {
                 case "1":
                     // Modificamos el nombre
                     modificarNombre(jugador);
+                    // Al cambiar el nombre se debe de
+                    // volver a seleccionar el jugador
+                    exit = true;
                     break;
                 case "2":
                     // Modificamos la nacionalidad
@@ -243,7 +244,7 @@ public class Principal {
      */
     public static String modificarEleccion() throws IOException {
         // Mostramos las opciones
-        System.out.println("Que dada deseas podificar?" +
+        System.out.println("Que dada deseas modificar?" +
                 "\n1) Nombre" +
                 "\n2) Nacionalidad" +
                 "\n3) Goles" +
@@ -260,12 +261,12 @@ public class Principal {
      * @throws IOException
      */
     private static void modificarNombre(String jugador) throws IOException {
-        // Pedimos el nuevo nombre
-        System.out.println("Introduce el nuevo nombre");
-        String nombre = br.readLine();
-
+        String nombre;
         // Iniciamos bucle
         do {
+            // Pedimos el nuevo nombre
+            System.out.println("Introduce el nuevo nombre");
+            nombre = br.readLine();
             // Comprobamos si existe un jugador
             // con el mismo nombre
             if (!existJugador(nombre)) {
@@ -456,15 +457,29 @@ public class Principal {
     }
 
     /**
+     * Comprobar si ya se llenó el array
+     * @return dr
+     */
+    public static boolean hasAllPlayers() {
+        // Bucle para 4 posiciones
+        for (int i = 0; i < 4; i++) {
+            // Si hay alguna posición vacía
+            // devolvemos false
+            if (jugadores[i] == null)
+                return false;
+        }
+        // Sino devolvemos true
+        return true;
+    }
+
+    /**
      * Inicio del programa
      * @param args
      * @throws IOException
      */
     public static void main(String... args) throws IOException {
 
-        // Bucle para registrar jugadores
-        for (int i = 1; i <= 4; i++) {
-            System.out.println("Jugador " + 1);
+        while (!hasAllPlayers()) {
             crearUsuario();
         }
 
@@ -474,5 +489,4 @@ public class Principal {
             exit = mostrarMenu();
         } while (!exit);
     }
-
 }

@@ -1,4 +1,4 @@
-package general;
+package exJugadores;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,17 +8,6 @@ public class Funs {
 
     // IMPORTS
     static public BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-
-    /**
-     * Random integer number
-     * @param min Mínimo incluido
-     * @param max Máximo incluido
-     * @return integer
-     */
-    public static int mathRandom(int min, int max) {
-        return (int)(Math.random()*(max+1-min+1)+min); // Calculamos un aleatorio entre el máximo y mínimo antes pasado
-    }
 
 
     /**

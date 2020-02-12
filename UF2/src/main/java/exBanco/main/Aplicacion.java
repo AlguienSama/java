@@ -30,6 +30,7 @@ public class Aplicacion {
                 "\n1) Dar de alta / baja a un cliente" +
                 "\n2) Mostrar clientes" +
                 "\n3) Mostrar cuentas" +
+                "\n4) Crear / Vincular / Eliminar cuenta" +
                 "\n0) Salir");
     }
 
@@ -55,6 +56,8 @@ public class Aplicacion {
                 case "3":
                     mostrarCuentas();
                     break;
+                case "4":
+                    alterCuenta();
                 default:
                     salir = false;
             }
@@ -106,6 +109,33 @@ public class Aplicacion {
                     salir = false;
             }
         } while (!salir);
+    }
+
+    private static void alterCuenta() throws IOException {
+        System.out.println("Que opción desea ejecutar?" +
+                "\n1) Crear cuenta" +
+                "\n2) Vincular cuenta" +
+                "\n3) Eliminar cuenta");
+        boolean salir;
+        do {
+            String elec = br.readLine();
+            salir = true;
+            switch (elec) {
+                case "1":
+                    crearCuenta(pedirClienteExistente());
+                    break;
+                case "2":
+                    vincularCuenta(pedirClienteExistente());
+                    break;
+                case "3":
+                    eliminarCuenta(pedirCuentaExistente());
+                    break;
+                default:
+                    System.out.println("Opción incorrecta!");
+                    salir = false;
+            }
+        } while (!
+                salir);
     }
 
     /*
@@ -260,6 +290,7 @@ public class Aplicacion {
     }
 
     private static void eliminarCliente(@NotNull Cliente c) {
+        String client = c.getNombreApe();
         for (Cuenta cuenta : c.getClienteCuentas()) {
             cuenta.delCliente(c);
             if (cuenta.getCuentaClientes().isEmpty()) {
@@ -267,7 +298,7 @@ public class Aplicacion {
             }
         }
         clientes.remove(c);
-        System.out.println("Cliente eliminado correctamente!");
+        System.out.println("Cliente " + client + " eliminado correctamente!");
     }
 
     private static void crearCuenta(Cliente c) {
@@ -277,13 +308,14 @@ public class Aplicacion {
         System.out.println("Cuenta " + cuenta.getNumero() + " creada correctamente!");
     }
 
-    private static void eliminarCuenta(Cuenta c) {
-        cuentas.remove(c);
+    private static void eliminarCuenta(@NotNull Cuenta c) {
+        String cuent = c.getNumero();
         for (Cliente cliente : clientes) {
             if (cliente.getClienteCuentas().contains(c))
                 cliente.delCuenta(c);
         }
-        System.out.println("Cuenta eliminada correctamente!");
+        cuentas.remove(c);
+        System.out.println("Cuenta " + cuent + " eliminada correctamente!");
         //
     }
 
@@ -292,6 +324,7 @@ public class Aplicacion {
         Cuenta cuenta = pedirCuentaExistente();
         c.addCuenta(cuenta);
         Objects.requireNonNull(cuenta).addCliente(c);
+        System.out.println("Cuenta " + cuenta.getNumero() + " agregada correctamente al cliente " + c.getNombreApe());
     }
 
     /*

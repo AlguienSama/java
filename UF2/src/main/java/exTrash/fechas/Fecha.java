@@ -1,5 +1,5 @@
 package exTrash.fechas;
-import general.Funs;
+import exSuperheroes.Funs;
 import org.jetbrains.annotations.NotNull;
 
 public class Fecha {
