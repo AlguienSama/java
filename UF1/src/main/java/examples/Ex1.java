@@ -15,7 +15,7 @@ public class Ex1 {
         byte numByte = 3; //[-128,127]
         short numShort = 2; //[-32768,32767]
         int numInt = 234543; //[2147483648, 2147483647] 
-        long numLong = 234l; //[- 9223372036854775808,9223372036854775807] x64
+        long numLong = 234L; //[- 9223372036854775808,9223372036854775807] x64
         
         float numFloat = 23.2f; //Precisió simple
         double numDouble = 123.12; // Precisió doble x64
